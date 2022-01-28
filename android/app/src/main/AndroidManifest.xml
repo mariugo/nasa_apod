@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nasa_apod">
+    package="com.mariugo.nasa_apod">
    <application
-        android:label="nasa_apod"
+        android:label="NASA Apod"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

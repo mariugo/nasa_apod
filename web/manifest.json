@@ -1,6 +1,6 @@
 {
-    "name": "nasa_apod",
-    "short_name": "nasa_apod",
+    "name": "NASA Apod",
+    "short_name": "NASA Apod",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
