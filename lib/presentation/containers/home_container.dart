@@ -6,7 +6,7 @@ import 'package:nasa_apod/presentation/screens/home/home_error.dart';
 import 'package:nasa_apod/presentation/screens/home/home_loading.dart';
 import 'package:nasa_apod/presentation/screens/home/home_screen.dart';
 
-class HomeContainer extends StatelessWidget {
+class HomeContainer extends StatefulWidget {
   final ApiRepositoryImp apiRepositoryImp;
 
   const HomeContainer({
@@ -15,16 +15,21 @@ class HomeContainer extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<HomeContainer> createState() => _HomeContainerState();
+}
+
+class _HomeContainerState extends State<HomeContainer> {
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<ApodDto>>(
-      future: apiRepositoryImp.getApods(),
+      future: widget.apiRepositoryImp.getApods(),
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const HomeLoading();
         }
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
-          return HomeScreen(apodList: snapshot.data!);
+          return HomeScreen(apods: snapshot.data!);
         }
         if (snapshot.hasError) {
           return HomeError(error: snapshot.error.toString());

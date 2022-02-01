@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:nasa_apod/data/api/api_repository_imp.dart';
 import 'package:nasa_apod/data/dto/apod_dto.dart';
 
-main() {
+main() async {
   final ApiRepositoryImp apiRepositoryImp = ApiRepositoryImp();
 
   test('Should get apod by Date', () async {
