@@ -3,11 +3,11 @@ import 'dart:convert';
 import '/data/api/api_repository.dart';
 import '/data/dto/apod_dto.dart';
 import 'package:http/http.dart' as http;
-//import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-//const String apiKey = dotenv.get('API_KEY');
+String apiKey = dotenv.get('API_KEY');
 
-const String apiKey = 'izJ4vXjqPSsx2YRlTlYVkbbrvZihyt9wSSuVDBPn';
+//const String apiKey = 'izJ4vXjqPSsx2YRlTlYVkbbrvZihyt9wSSuVDBPn';
 const String baseUrl = 'https://api.nasa.gov/planetary/apod?api_key=';
 
 class ApiRepositoryImp extends ApiRepository {
