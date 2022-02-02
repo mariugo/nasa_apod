@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import 'package:nasa_apod/data/dto/apod_dto.dart';
+import '/data/dto/apod_dto.dart';
 
 class ApodDetailScreen extends StatelessWidget {
   final ApodDto apod;
@@ -20,13 +21,49 @@ class ApodDetailScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(apod.url),
-            Text(apod.date),
-            Text(apod.explanation),
+            apod.mediaType == 'image'
+                ? CachedNetworkImage(
+                    imageUrl: apod.url,
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    width: double.infinity,
+                  )
+                : Container(
+                    height: MediaQuery.of(context).size.height * 0.2,
+                    width: double.infinity,
+                    color: Colors.blue,
+                    child: const Center(
+                      child: Text('Video'),
+                    ),
+                  ),
+            Text(
+              apod.date,
+              style: const TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.45,
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  child: Text(
+                    apod.explanation,
+                    textAlign: TextAlign.justify,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      wordSpacing: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

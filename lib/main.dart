@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nasa_apod/data/local/data_store_repository_imp.dart';
 
 import '/data/api/api_repository_imp.dart';
 import '/presentation/containers/home_container.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       ),
       home: HomeContainer(
         apiRepositoryImp: ApiRepositoryImp(),
+        dataStoreRepositoryImp: DataStoreRepositoryImp(),
       ),
     );
   }

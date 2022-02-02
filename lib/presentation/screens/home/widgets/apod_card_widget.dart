@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class ApodCardWidget extends StatelessWidget {
   final String image;
   final String title;
+  final String mediaType;
   final String date;
   final VoidCallback navigate;
 
@@ -11,6 +12,7 @@ class ApodCardWidget extends StatelessWidget {
     Key? key,
     required this.image,
     required this.title,
+    required this.mediaType,
     required this.date,
     required this.navigate,
   }) : super(key: key);
@@ -33,12 +35,21 @@ class ApodCardWidget extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15)),
-                  child: CachedNetworkImage(
-                    imageUrl: image,
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+                  child: mediaType == 'image'
+                      ? CachedNetworkImage(
+                          imageUrl: image,
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        )
+                      : Container(
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          width: double.infinity,
+                          color: Colors.blue,
+                          child: const Center(
+                            child: Text('Video'),
+                          ),
+                        ),
                 ),
                 Positioned(
                   bottom: 20,

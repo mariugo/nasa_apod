@@ -34,6 +34,7 @@ class ApiRepositoryImp extends ApiRepository {
       return ApodDto(
         date: _json['date'],
         explanation: _json['explanation'],
+        mediaType: _json['media_type'],
         title: _json['title'],
         url: _json['url'],
       );

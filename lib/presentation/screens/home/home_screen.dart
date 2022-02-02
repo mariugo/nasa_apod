@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2022),
+      firstDate: DateTime(1980),
       lastDate: DateTime.now(),
     ).then((_selectedDate) {
       if (_selectedDate == null) {
@@ -94,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
           navigate: () => _navigateToApodDetailsScreen(index),
           image: apodList[index].url,
           title: apodList[index].title,
+          mediaType: apodList[index].mediaType,
           date: apodList[index].date,
         ),
       ),
