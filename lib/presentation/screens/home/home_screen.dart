@@ -1,11 +1,11 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:nasa_apod/data/api/api_repository_imp.dart';
 
-import 'package:nasa_apod/data/dto/apod_dto.dart';
-import 'package:nasa_apod/presentation/screens/detail/apod_detail_screen.dart';
-import 'package:nasa_apod/presentation/screens/home/widgets/apod_card_widget.dart';
+import '/data/api/api_repository_imp.dart';
+import '/data/dto/apod_dto.dart';
+import '/presentation/screens/detail/apod_detail_screen.dart';
+import '/presentation/screens/home/widgets/apod_card_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   final List<ApodDto> apods;

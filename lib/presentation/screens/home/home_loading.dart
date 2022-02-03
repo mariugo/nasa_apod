@@ -8,7 +8,7 @@ class HomeLoading extends StatelessWidget {
     return const Scaffold(
       body: SafeArea(
         child: Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator.adaptive(),
         ),
       ),
     );

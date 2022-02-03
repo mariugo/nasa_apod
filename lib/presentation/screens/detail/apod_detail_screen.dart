@@ -32,7 +32,7 @@ class ApodDetailScreen extends StatelessWidget {
                     width: double.infinity,
                   )
                 : Container(
-                    height: MediaQuery.of(context).size.height * 0.2,
+                    height: MediaQuery.of(context).size.height * 0.4,
                     width: double.infinity,
                     color: Theme.of(context).primaryColor,
                     child: Center(

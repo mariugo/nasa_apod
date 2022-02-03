@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nasa_apod/data/api/api_repository_imp.dart';
 import 'package:nasa_apod/data/dto/apod_dto.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-main() async {
+Future main() async {
+  dotenv.testLoad(fileInput: File('.env').readAsStringSync());
   final ApiRepositoryImp apiRepositoryImp = ApiRepositoryImp();
 
   test('Should get apod by Date', () async {

@@ -12,7 +12,10 @@ class HomeError extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Text(error),
+          child: Text(
+            error,
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
         ),
       ),
     );

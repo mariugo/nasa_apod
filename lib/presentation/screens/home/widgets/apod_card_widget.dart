@@ -45,7 +45,7 @@ class ApodCardWidget extends StatelessWidget {
                       : Container(
                           height: MediaQuery.of(context).size.height * 0.25,
                           width: double.infinity,
-                          color: Colors.blue,
+                          color: Theme.of(context).primaryColor,
                           child: Center(
                             child: Text(
                               'Video',
