@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nasa_apod/data/api/api_repository_imp.dart';
@@ -24,18 +25,68 @@ class _HomeScreenState extends State<HomeScreen> {
   List<ApodDto> newApodList = [];
   ApodDto? apodDto;
   String? _date;
+  bool _isConnected = true;
 
   @override
   void initState() {
     apodList.addAll(widget.apods);
+    _checkInternetAndDisableSearch();
     super.initState();
   }
 
-  Future<void> _refresh() async {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'NASA Apod',
+        ),
+        actions: [
+          IconButton(
+            onPressed: _isConnected == true ? _selectDate : () {},
+            icon: const Icon(
+              Icons.search,
+            ),
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: _listView(),
+      ),
+    );
+  }
+
+  Widget _listView() {
+    return RefreshIndicator(
+      onRefresh: _refreshApodList,
+      child: ListView.builder(
+        itemCount: apodList.length,
+        itemBuilder: (_, index) => ApodCardWidget(
+          navigate: () => _navigateToApodDetailsScreen(index),
+          image: apodList[index].url,
+          title: apodList[index].title,
+          mediaType: apodList[index].mediaType,
+          date: apodList[index].date,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _refreshApodList() async {
     newApodList = await apiRepositoryImp.getApods();
     setState(() {
       apodList = newApodList;
     });
+  }
+
+  _checkInternetAndDisableSearch() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      setState(() {
+        _isConnected = false;
+      });
+    }
+    return _isConnected;
   }
 
   _selectDate() {
@@ -61,44 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
       apodList.clear();
       apodList.add(apodDto!);
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'NASA Apod',
-        ),
-        actions: [
-          IconButton(
-            onPressed: _selectDate,
-            icon: const Icon(
-              Icons.search,
-            ),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: _listView(),
-      ),
-    );
-  }
-
-  Widget _listView() {
-    return RefreshIndicator(
-      onRefresh: _refresh,
-      child: ListView.builder(
-        itemCount: apodList.length,
-        itemBuilder: (_, index) => ApodCardWidget(
-          navigate: () => _navigateToApodDetailsScreen(index),
-          image: apodList[index].url,
-          title: apodList[index].title,
-          mediaType: apodList[index].mediaType,
-          date: apodList[index].date,
-        ),
-      ),
-    );
   }
 
   _navigateToApodDetailsScreen(int index) {
