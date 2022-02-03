@@ -34,17 +34,17 @@ class ApodDetailScreen extends StatelessWidget {
                 : Container(
                     height: MediaQuery.of(context).size.height * 0.2,
                     width: double.infinity,
-                    color: Colors.blue,
-                    child: const Center(
-                      child: Text('Video'),
+                    color: Theme.of(context).primaryColor,
+                    child: Center(
+                      child: Text(
+                        'Video',
+                        style: Theme.of(context).textTheme.headline1,
+                      ),
                     ),
                   ),
             Text(
               apod.date,
-              style: const TextStyle(
-                fontSize: 16,
-                fontStyle: FontStyle.italic,
-              ),
+              style: Theme.of(context).textTheme.subtitle2,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.45,
@@ -55,11 +55,7 @@ class ApodDetailScreen extends StatelessWidget {
                   child: Text(
                     apod.explanation,
                     textAlign: TextAlign.justify,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      wordSpacing: 2,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               ),

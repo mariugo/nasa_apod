@@ -7,7 +7,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 String apiKey = dotenv.get('API_KEY');
 
-//const String apiKey = 'izJ4vXjqPSsx2YRlTlYVkbbrvZihyt9wSSuVDBPn';
 const String baseUrl = 'https://api.nasa.gov/planetary/apod?api_key=';
 
 class ApiRepositoryImp extends ApiRepository {

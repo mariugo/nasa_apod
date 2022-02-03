@@ -46,8 +46,11 @@ class ApodCardWidget extends StatelessWidget {
                           height: MediaQuery.of(context).size.height * 0.25,
                           width: double.infinity,
                           color: Colors.blue,
-                          child: const Center(
-                            child: Text('Video'),
+                          child: Center(
+                            child: Text(
+                              'Video',
+                              style: Theme.of(context).textTheme.headline1,
+                            ),
                           ),
                         ),
                 ),
@@ -63,10 +66,7 @@ class ApodCardWidget extends StatelessWidget {
                     ),
                     child: Text(
                       title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
+                      style: Theme.of(context).textTheme.headline1,
                       softWrap: true,
                       overflow: TextOverflow.fade,
                     ),
@@ -74,8 +74,12 @@ class ApodCardWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Text(
-              date,
+            Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: Text(
+                date,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
             ),
           ],
         ),
